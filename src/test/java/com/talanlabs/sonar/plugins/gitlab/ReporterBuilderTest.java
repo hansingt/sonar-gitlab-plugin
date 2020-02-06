@@ -547,8 +547,14 @@ public class ReporterBuilderTest {
 
         reporterBuilder.build(null, Arrays.asList(newIssue, globalIssue, issueOnProject, issueOnDir, fileNotInPR, lineNotVisible, notNewIssue));
 
-        Mockito.verify(commitFacade).writeJsonFile(Mockito.contains(
-                "[{\"fingerprint\":\"null\",\"check_name\":\"msg\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}},{\"fingerprint\":\"null\",\"check_name\":\"msg4\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}},{\"fingerprint\":\"null\",\"check_name\":\"msg5\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}},{\"fingerprint\":\"null\",\"check_name\":\"msg1\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":1,\"end\":1}}},{\"fingerprint\":\"null\",\"check_name\":\"msg2\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":2,\"end\":2}}},{\"fingerprint\":\"null\",\"check_name\":\"msg3\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":1,\"end\":1}}}]"));
+        Mockito.verify(commitFacade).writeJsonFile(Mockito.contains("[" +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}}," +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg4\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}}," +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg5\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":0,\"end\":0}}}," +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg1\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":1,\"end\":1}}}," +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg2\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":2,\"end\":2}}}," +
+                "{\"fingerprint\":\"null\",\"check_name\":\"repo:rule\",\"type\":\"issue\",\"description\":\"msg3\",\"location\":{\"path\":\"null\",\"lines\": { \"begin\":1,\"end\":1}}}" +
+                "]"));
     }
 
     @Test
